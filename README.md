@@ -1,4 +1,4 @@
-# Day 00 – Piscine .NET
+# Day 00 – .NET Boot camp
 ### Procedural C#
 
 # Contents
