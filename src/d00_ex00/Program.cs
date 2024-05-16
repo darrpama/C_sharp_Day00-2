@@ -1,7 +1,4 @@
 ﻿double GetTotalMonthlyPayment(double loanAmmount, double interestRateOnLoanPerMounth, int mounths) {
-  if (mounths < 0) {
-    throw new ArgumentException("Number of mounths should be > 0");
-  }
   double montlyPayment = 0;
   montlyPayment = (loanAmmount * interestRateOnLoanPerMounth *
                    Math.Pow((1 + interestRateOnLoanPerMounth), mounths)) /
@@ -62,6 +59,18 @@ try {
   double loanAmount = Convert.ToDouble(args[0]);
   double annualPercentageRate = Convert.ToDouble(args[1]);
   int numberOfMonths = Convert.ToInt32(args[2]);
+
+  if (loanAmount <= 0.0) {
+    throw new ArgumentException("Loan amount should be positive.");
+  }
+
+  if (annualPercentageRate <= 0.0 || annualPercentageRate >= 100) {
+    throw new ArgumentException("Annual percentage rate should be positive and less than 100%.");
+  }
+
+  if (numberOfMonths <= 0) {
+    throw new ArgumentException("Number of mounths should be > 0.");
+  }
 
   PrintOutput(numberOfMonths, loanAmount, annualPercentageRate);
 } catch (Exception e) {
